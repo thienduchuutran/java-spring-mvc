@@ -26,7 +26,7 @@
                 <h3>Create a new user</h3>
                 <hr />
 
-                <form>
+                <form method="POST" action="/admin/user/create1">
                     <div class="mb-3">
                         <label class="form-label">Email:</label><br>
                         <input type="email" class="form-control">
