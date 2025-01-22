@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <!DOCTYPE html>
@@ -26,29 +27,35 @@
                 <h3>Create a new user</h3>
                 <hr />
 
-                <form method="POST" action="/admin/user/create1">
+                <form:form method="POST" action="/admin/user/create1"
+                modelAttribute="newUser">
                     <div class="mb-3">
                         <label class="form-label">Email:</label><br>
-                        <input type="email" class="form-control">
+                        <form:input type="email" class="form-control" path="email"/>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Password:</label>
-                        <input type="password" class="form-control">
+                        <form:input type="password" class="form-control" path="password"/>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Phone Number:</label>
-                        <input type="text" class="form-control">
+                        <form:input type="text" class="form-control" path="phone"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address:</label>
+                        <form:input type="text" class="form-control" path="address"/>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Full Name:</label>
-                        <input type="text" class="form-control">
+                        <form:input type="text" class="form-control" path="fullName"/>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Create</button>
-                  </form>
+                  </form:form>
             </div>
         </div>
     </div>
