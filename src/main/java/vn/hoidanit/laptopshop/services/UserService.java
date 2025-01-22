@@ -7,4 +7,8 @@ public class UserService {
     public String handleHello() {
         return "hello";
     }
+
+    // public void createNewUser(){
+    // return "hi";
+    // }
 }

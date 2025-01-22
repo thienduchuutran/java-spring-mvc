@@ -26,6 +26,11 @@ public class UserController {
         // return this.userService.handleHello();
         return "hello";
     }
+
+    @RequestMapping("/admin/user")
+    public String createNewUser(Model model) {
+        return "admin/user/create";
+    }
 }
 // @RestController
 // public class UserController {
