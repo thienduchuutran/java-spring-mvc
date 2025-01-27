@@ -6,6 +6,8 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.services.UserService;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +26,9 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
-        String test = this.userService.handleHello();
-        model.addAttribute("eric", test);
+        List<User> arrUsers = this.userService.getAllUsers();
+        System.out.println(arrUsers);
+        // model.addAttribute("eric", test);
         model.addAttribute("hoidanit", "controller with model");
         return "hello";
     }

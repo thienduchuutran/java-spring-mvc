@@ -1,5 +1,7 @@
 package vn.hoidanit.laptopshop.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.User;
@@ -19,5 +21,9 @@ public class UserService {
 
     public User handleSaveUser(User user) {
         return this.userRepository.save(user);
+    }
+
+    public List<User> getAllUsers() {
+        return this.userRepository.findAll();
     }
 }
