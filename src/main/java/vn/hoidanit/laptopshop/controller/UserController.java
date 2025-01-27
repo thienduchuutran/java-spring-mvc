@@ -3,6 +3,7 @@ package vn.hoidanit.laptopshop.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.services.UserService;
 
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //MVC pattern
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
-    public UserController(UserService userService) {
+    private final UserRepository userRepository;
+
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @RequestMapping("/")
@@ -39,6 +43,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
         System.out.println("run here" + hoidanit);
+        userRepository.save(hoidanit);
         return "hello";
     }
 }
