@@ -1,7 +1,13 @@
 package vn.hoidanit.laptopshop.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class User {
-    private String id;
+    @Id // we need this id bean for this class to become an entity without error
+    private long id;
+
     private String email;
     private String password;
     private String fullName;
