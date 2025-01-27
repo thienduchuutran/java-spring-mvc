@@ -1,11 +1,14 @@
 package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class User {
     @Id // we need this id bean for this class to become an entity without error
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // this will help id auto increments
     private long id;
 
     private String email;
