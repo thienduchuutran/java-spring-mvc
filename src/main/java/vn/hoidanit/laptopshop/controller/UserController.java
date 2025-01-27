@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //MVC pattern
 @Controller
@@ -35,11 +36,16 @@ public class UserController {
 
     @RequestMapping("/admin/user")
     public String getUserPage(Model model) {
+        return "admin/user/table-user";
+    }
+
+    @RequestMapping("/admin/user/create") // Get method
+    public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User()); // this is the data type we pass
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
         System.out.println("run here" + hoidanit);
         this.userService.handleSaveUser(hoidanit);
