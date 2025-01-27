@@ -18,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
     private final UserService userService;
 
-    private final UserRepository userRepository;
-
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     @RequestMapping("/")
@@ -30,7 +27,6 @@ public class UserController {
         String test = this.userService.handleHello();
         model.addAttribute("eric", test);
         model.addAttribute("hoidanit", "controller with model");
-        // return this.userService.handleHello();
         return "hello";
     }
 
@@ -43,7 +39,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
     public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
         System.out.println("run here" + hoidanit);
-        userRepository.save(hoidanit);
+        this.userService.handleSaveUser(hoidanit);
         return "hello";
     }
 }
