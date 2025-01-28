@@ -27,15 +27,15 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
-        List<User> arrUsers = this.userService.getAllUsers();
-        System.out.println(arrUsers);
-        // model.addAttribute("eric", test);
         model.addAttribute("hoidanit", "controller with model");
         return "hello";
     }
 
     @RequestMapping("/admin/user")
     public String getUserPage(Model model) {
+        List<User> arrUsers = this.userService.getAllUsers();
+        System.out.println("check user" + arrUsers);
+        model.addAttribute("users1", arrUsers);
         return "admin/user/table-user";
     }
 
