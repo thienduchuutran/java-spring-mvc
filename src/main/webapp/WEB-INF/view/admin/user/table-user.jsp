@@ -26,7 +26,7 @@
             <div class="col-12 mx-auto">
                 <div class="d-flex justify-content-between">
                     <h3>Table Users</h3>
-                    <a href="admin/user/create" class="btn btn-primary"> 
+                    <a href="/admin/user/create" class="btn btn-primary"> 
                         Create a new user
                     </a>
                 </div>
