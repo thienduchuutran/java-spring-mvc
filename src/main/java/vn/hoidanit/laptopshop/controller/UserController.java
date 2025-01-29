@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +41,13 @@ public class UserController {
 
     @RequestMapping("/admin/user/create") // Get method
     public String getCreateUserPage(Model model) {
+        model.addAttribute("newUser", new User()); // this is the data type we pass
+        return "admin/user/create";
+    }
+
+    @RequestMapping("/admin/user/{hoidanit}") // Get method
+    public String getUserDetailPage(Model model, @PathVariable long hoidanit) {
+        System.out.println("check path id: " + hoidanit);
         model.addAttribute("newUser", new User()); // this is the data type we pass
         return "admin/user/create";
     }
