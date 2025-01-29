@@ -48,9 +48,19 @@ public class UserController {
     @RequestMapping("/admin/user/{id}") // Get method
     public String getUserDetailPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
                                                                           // get individual user id
-        System.out.println("check path id: " + id);
-        model.addAttribute("id", id); // this is the data type we pass
+        User data = this.userService.getUserById(id);
+        model.addAttribute("data", data); // this is the data type we pass
+        System.out.println("check data: " + data);
         return "admin/user/show";
+    }
+
+    @RequestMapping("/admin/user/update/{id}") // Get method
+    public String updateUserPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
+                                                                       // get individual user id
+        User data = this.userService.getUserById(id);
+        model.addAttribute("data", data); // this is the data type we pass
+        System.out.println("check data: " + data);
+        return "admin/user/update";
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
