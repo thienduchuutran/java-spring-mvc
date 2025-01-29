@@ -45,11 +45,12 @@ public class UserController {
         return "admin/user/create";
     }
 
-    @RequestMapping("/admin/user/{hoidanit}") // Get method
-    public String getUserDetailPage(Model model, @PathVariable long hoidanit) {
-        System.out.println("check path id: " + hoidanit);
-        model.addAttribute("newUser", new User()); // this is the data type we pass
-        return "admin/user/create";
+    @RequestMapping("/admin/user/{id}") // Get method
+    public String getUserDetailPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
+                                                                          // get individual user id
+        System.out.println("check path id: " + id);
+        model.addAttribute("id", id); // this is the data type we pass
+        return "admin/user/show";
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
