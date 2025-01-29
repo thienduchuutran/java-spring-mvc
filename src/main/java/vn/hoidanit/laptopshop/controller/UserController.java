@@ -49,16 +49,15 @@ public class UserController {
     public String getUserDetailPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
                                                                           // get individual user id
         User data = this.userService.getUserById(id);
-        model.addAttribute("data", data); // this is the data type we pass
+        model.addAttribute("data", data); // passing data into view
         System.out.println("check data: " + data);
         return "admin/user/show";
     }
 
     @RequestMapping("/admin/user/update/{id}") // Get method
-    public String updateUserPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
-                                                                       // get individual user id
+    public String updateUserPage(Model model, @PathVariable long id) {
         User data = this.userService.getUserById(id);
-        model.addAttribute("data", data); // this is the data type we pass
+        model.addAttribute("newUser", new User());
         System.out.println("check data: " + data);
         return "admin/user/update";
     }
