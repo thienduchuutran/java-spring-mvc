@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,12 +59,23 @@ public class UserController {
     public String updateUserPage(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser); // we are passing a param newUser that has value of currentUser
-        System.out.println("check data: " + currentUser);
         return "admin/user/update";
     }
 
+    @PostMapping("/admin/user/update") // Post method
+    public String postUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit) {
+        User currentUser = this.userService.getUserById(hoidanit.getId());
+        System.out.println("check data: " + currentUser);
+        if (currentUser != null) {
+        } else {
+            System.out.println("data = null");
+        }
+        return "redirect:/admin/user";
+    }
+
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
+    public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) { // getting value of user in
+                                                                                          // view to save in db
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }

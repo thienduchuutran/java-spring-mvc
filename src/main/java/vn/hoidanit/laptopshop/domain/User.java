@@ -17,10 +17,6 @@ public class User {
     private String address;
     private String phone;
 
-    public long getId() {
-        return id;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -63,6 +59,10 @@ public class User {
 
     public String getPhone() {
         return phone;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override

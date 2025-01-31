@@ -28,6 +28,6 @@ public class UserService {
     }
 
     public User getUserById(long id) {
-        return this.userRepository.findById(+id);
+        return this.userRepository.findById(id);
     }
 }
