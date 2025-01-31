@@ -86,7 +86,15 @@ public class UserController {
     @GetMapping("/admin/user/delete/{id}") // Get method
     public String deleteUserPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
-        model.addAttribute("newUser", new User()); // this modelAttribute here is to pass data from view to controller
+        User user = new User();
+        user.setId(id);
+        model.addAttribute("newUser", user); // this modelAttribute here is to pass data from view to controller
         return "admin/user/delete";
+    }
+
+    @PostMapping("/admin/user/delete") // Post method
+    public String postDeleteUser(Model model, @ModelAttribute("newUser") User hoidanit) {
+        this.userService.deleteById(hoidanit.getId());
+        return "redirect:/admin/user";
     }
 }

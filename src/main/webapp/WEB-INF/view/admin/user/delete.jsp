@@ -36,7 +36,7 @@
                 <!-- the form input beloew is for controller to get user id from view through path attribute -->
                     <div class="mb-3" style="display: none;">
                         <label class="form-label">Id:</label>
-                        <form:input value="${id}" type="text" class="form-control" path="id" />
+                        <form:input value="${newUser.id}" type="text" class="form-control" path="id" />
                     </div>
                     <button class="btn btn-danger">Confirm</button>
                 </form:form>
