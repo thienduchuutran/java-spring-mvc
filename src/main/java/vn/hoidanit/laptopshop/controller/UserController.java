@@ -71,7 +71,7 @@ public class UserController {
             currentUser.setPhone(hoidanit.getPhone());
 
             // here we just set it, but not save to db yet, thus
-            this.userService.handleSaveUser(hoidanit);
+            this.userService.handleSaveUser(currentUser);
         }
         return "redirect:/admin/user";
     }
