@@ -82,4 +82,11 @@ public class UserController {
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
+
+    @GetMapping("/admin/user/delete/{id}") // Get method
+    public String deleteUserPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        model.addAttribute("newUser", new User()); // this modelAttribute here is to pass data from view to controller
+        return "admin/user/delete";
+    }
 }
