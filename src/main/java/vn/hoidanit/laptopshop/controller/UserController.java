@@ -65,10 +65,13 @@ public class UserController {
     @PostMapping("/admin/user/update") // Post method
     public String postUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit) {
         User currentUser = this.userService.getUserById(hoidanit.getId());
-        System.out.println("check data: " + currentUser);
         if (currentUser != null) {
-        } else {
-            System.out.println("data = null");
+            currentUser.setAddress(hoidanit.getAddress());
+            currentUser.setFullName(hoidanit.getFullName());
+            currentUser.setPhone(hoidanit.getPhone());
+
+            // here we just set it, but not save to db yet, thus
+            this.userService.handleSaveUser(hoidanit);
         }
         return "redirect:/admin/user";
     }
