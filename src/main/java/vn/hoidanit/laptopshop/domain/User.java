@@ -4,8 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id // we need this id bean for this class to become an entity without error
     @GeneratedValue(strategy = GenerationType.IDENTITY) // this will help id auto increments
@@ -20,6 +23,9 @@ public class User {
     private String avatar;
 
     // roleId
+    // User
+    @ManyToOne
+    private Role role;
 
     public void setId(long id) {
         this.id = id;
