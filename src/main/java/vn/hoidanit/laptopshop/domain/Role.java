@@ -22,7 +22,7 @@ public class Role {
     private String description;
 
     // role - one => many - user
-    @OneToMany
+    @OneToMany(mappedBy = "role")
     private List<User> users;
 
     public Long getId() {
