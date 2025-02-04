@@ -30,26 +30,27 @@
                     </ol>
                     <div class="mt-5">
                         <div class="row">
-                            <div class="col-md-6 col-12 mx-auto">
-                                <h3>Delete user with id = ${id}</h3>
-                                <hr />
-                
-                                <div class="alert alert-danger">
-                                    Are you sure to delete this user?
+                            <div class="col-12 mx-auto">
+                                <div class="d-flex justify-content-between">
+                                    <h3>User Detail with id = ${data.id}</h3>
                                 </div>
                 
-                                <!-- the modelAttribute is to pass data from view to controller -->
-                                <form:form method="post" action="/admin/user/delete" modelAttribute="newUser">
-                                <!-- the form input beloew is for controller to get user id from view through path attribute -->
-                                    <div class="mb-3" style="display: none;">
-                                        <label class="form-label">Id:</label>
-                                        <form:input value="${newUser.id}" type="text" class="form-control" path="id" />
+                                <hr />
+                                <div class="card" style="width: 60%">
+                                    <div class="card-header">
+                                      User Information
                                     </div>
-                                    <button class="btn btn-danger">Confirm</button>
-                                </form:form>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">ID: ${data.id}</li>
+                                      <li class="list-group-item">Email: ${data.email}</li>
+                                      <li class="list-group-item">Full Name: ${data.fullName}</li>
+                                      <li class="list-group-item">Address:${data.address} </li>
+                                    </ul>
+                                </div>
+                                <a href="/admin/user" class="btn btn-warning mt-3">Back</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </main>
             <jsp:include page="../layout/footer.jsp"/>
