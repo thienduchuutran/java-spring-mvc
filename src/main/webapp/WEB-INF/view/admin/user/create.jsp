@@ -48,7 +48,9 @@
                                 <hr />
                 
                                 <form:form method="POST" action="/admin/user/create"
-                                modelAttribute="newUser" class="row">
+                                modelAttribute="newUser" class="row"
+                                enctype="multipart/form-data"
+                                >
                                     <div class="mb-3 col-12 col-md-6">
                                         <label class="form-label">Email:</label><br>
                                         <form:input type="email" class="form-control" path="email"/>
@@ -84,7 +86,9 @@
 
                                     <div class="mb-3 col-12 col-md-6">
                                         <label for="avatarFile" class="form-label">Avatar:</label>
-                                        <input id="avatarFile" type="file" class="form-control" accept=".png, .jpg, .jpeg"/>
+                                        <input id="avatarFile" type="file" class="form-control" accept=".png, .jpg, .jpeg"
+                                        name="hoidanitFile"
+                                        />
                                     </div>
 
                                     <div class="mb-3 col-12">

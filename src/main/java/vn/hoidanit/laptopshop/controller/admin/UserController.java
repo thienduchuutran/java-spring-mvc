@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
@@ -76,9 +77,11 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) { // getting value of user in
-                                                                                          // view to save in db
+    @PostMapping(value = "/admin/user/create")
+    public String createUserPage(Model model,
+            @ModelAttribute("newUser") User hoidanit,
+            @RequestParam("hoidanitFile") MultipartFile file) { // getting value of user in
+                                                                // view to save in db
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
