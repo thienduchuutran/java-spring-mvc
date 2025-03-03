@@ -88,6 +88,7 @@
                                         <label for="avatarFile" class="form-label">Avatar:</label>
                                         <input id="avatarFile" type="file" class="form-control" accept=".png, .jpg, .jpeg"
                                         name="hoidanitFile"
+                                        multiple
                                         />
                                     </div>
 
