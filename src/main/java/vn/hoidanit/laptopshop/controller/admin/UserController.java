@@ -40,7 +40,7 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @RequestMapping("/admin/user/create") // Get method
+    @GetMapping("/admin/user/create") // Get method
     public String getCreateUserPage(Model model) {
         model.addAttribute("newUser", new User()); // this is the data type we pass
         return "admin/user/create";
