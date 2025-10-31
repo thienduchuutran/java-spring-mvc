@@ -49,12 +49,6 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @GetMapping("/admin/user/create") // Get method
-    public String getCreateUserPage(Model model) {
-        model.addAttribute("newUser", new User()); // this is the data type we pass
-        return "admin/user/create";
-    }
-
     @RequestMapping("/admin/user/{id}") // Get method
     public String getUserDetailPage(Model model, @PathVariable long id) { // this @PathVariable is to dynamically
                                                                           // get individual user id
@@ -85,12 +79,18 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
+    @GetMapping("/admin/user/create") // Get method
+    public String getCreateUserPage(Model model) {
+        model.addAttribute("newUser", new User()); // this is the data type we pass
+        return "admin/user/create";
+    }
+
     @PostMapping(value = "/admin/user/create")
     public String createUserPage(Model model,
             @ModelAttribute("newUser") User hoidanit,
             @RequestParam("hoidanitFile") MultipartFile file) { // getting value of user in
                                                                 // view to save in db
-        this.uploadService.handleSaveUploadFile(file, "avatar")
+        // String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }

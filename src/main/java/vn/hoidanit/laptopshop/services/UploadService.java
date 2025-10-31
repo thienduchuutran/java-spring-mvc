@@ -18,8 +18,9 @@ public class UploadService {
         this.servletContext = servletContext;
     }
 
-    public void handleSaveUploadFile(MultipartFile file, String targetFolder) {
+    public String handleSaveUploadFile(MultipartFile file, String targetFolder) {
         String rootPath = this.servletContext.getRealPath("/resources/images");
+        String finalName = "";
 
         try {
             byte[] bytes;
@@ -31,8 +32,8 @@ public class UploadService {
                 dir.mkdirs();
 
             // Create the file on server
-            File serverFile = new File(dir.getAbsolutePath() + File.separator +
-                    +System.currentTimeMillis() + "-" + file.getOriginalFilename());
+            finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
+            File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
 
             BufferedOutputStream stream = new BufferedOutputStream(
                     new FileOutputStream(serverFile));
@@ -42,5 +43,6 @@ public class UploadService {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return finalName;
     }
 }

@@ -32,6 +32,9 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
     public Role getRole() {
         return role;
     }
@@ -47,9 +50,6 @@ public class User {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
-
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
 
     public void setId(long id) {
         this.id = id;
