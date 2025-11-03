@@ -8,9 +8,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="ĐứcĐức - Dự án laptopshop" />
-    <meta name="author" content="Đức" />
-    <title>Dashboard -</title>   
+    <meta name="description" content="Duc Titus - laptopshop project" />
+    <meta name="author" content="Duc Titus" />
+    <title>Products - Duc Titus</title>   
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -22,12 +22,23 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Manage Products</h1>
+                    <h1 class="mt-4">Table Products</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item "><a href="/admin">Dashboard</a></li>
                         <li class="breadcrumb-item active">Products</li>
                     </ol>
-                    <div>table product</div>
+                    <hr/>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Factory</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </main>
             <jsp:include page="../layout/footer.jsp"/>
