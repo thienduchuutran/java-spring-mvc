@@ -44,6 +44,9 @@
                                       <li class="list-group-item">ID: ${data.id}</li>
                                       <li class="list-group-item">Email: ${data.email}</li>
                                       <li class="list-group-item">Full Name: ${data.fullName}</li>
+                                      <li class="list-group-item">Role: ${not empty data and not empty data.role and not empty data.role.name
+                                        ? data.role.name
+                                        : 'Guest User'}</li>
                                       <li class="list-group-item">Address:${data.address} </li>
                                     </ul>
                                 </div>
