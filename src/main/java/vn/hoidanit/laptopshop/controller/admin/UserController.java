@@ -6,6 +6,7 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.services.UploadService;
 import vn.hoidanit.laptopshop.services.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -23,12 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
     private final UserService userService;
     private final UploadService uploadService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, UploadService uploadService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.uploadService = uploadService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping("/")
@@ -86,7 +87,7 @@ public class UserController {
             @RequestParam("hoidanitFile") MultipartFile file) { // getting value of user in
                                                                 // view to save in db
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        String hashPassword = this.bCryptPasswordEncoder.encode(hoidanit.getPassword());
+        String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
         // this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
