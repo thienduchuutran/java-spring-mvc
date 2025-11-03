@@ -5,7 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.services.UploadService;
 import vn.hoidanit.laptopshop.services.UserService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
@@ -88,7 +87,11 @@ public class UserController {
                                                                 // view to save in db
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
-        // this.userService.handleSaveUser(hoidanit);
+        
+        hoidanit.setAvatar((avatar));
+        hoidanit.setPassword(hashPassword);
+        hoidanit.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
+        this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
 
