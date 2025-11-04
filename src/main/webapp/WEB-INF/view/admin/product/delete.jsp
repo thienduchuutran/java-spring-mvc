@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Duc Titus - laptopshop project" />
     <meta name="author" content="Duc Titus" />
-    <title>Delete User</title>   
+    <title>Delete Product</title>   
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -23,27 +23,27 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Delete User</h1>
+                    <h1 class="mt-4">Delete Product</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item "><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Delete User</li>
+                        <li class="breadcrumb-item active">Delete Product</li>
                     </ol>
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-md-6 col-12 mx-auto">
-                                <h3>Delete User with id = ${id}</h3>
+                                <h3>Delete Product with id = ${id}</h3>
                                 <hr />
                 
                                 <div class="alert alert-danger">
-                                    Are you sure to delete this user?
+                                    Are you sure to delete this product?
                                 </div>
                 
                                 <!-- the modelAttribute is to pass data from view to controller -->
-                                <form:form method="post" action="/admin/user/delete" modelAttribute="newUser">
+                                <form:form method="post" action="/admin/product/delete" modelAttribute="newProduct">
                                 <!-- the form input beloew is for controller to get user id from view through path attribute -->
                                     <div class="mb-3" style="display: none;">
                                         <label class="form-label">Id:</label>
-                                        <form:input value="${newUser.id}" type="text" class="form-control" path="id" />
+                                        <form:input value="${id}" type="text" class="form-control" path="id" />
                                     </div>
                                     <button class="btn btn-danger">Confirm</button>
                                 </form:form>

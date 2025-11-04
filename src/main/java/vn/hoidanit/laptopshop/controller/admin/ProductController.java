@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,5 +51,26 @@ public class ProductController {
         newProduct.setImage(image);
         this.productService.createProduct(newProduct);
         return "redirect:/admin/product";
+    }
+
+    @GetMapping("/admin/product/delete/{id}")
+    public String getDeleteProductPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        model.addAttribute("newProduct", new Product());
+        return "/admin/product/delete";
+    }
+
+    @PostMapping("/admin/product/delete")
+    public String deleteProduct(Model model, @ModelAttribute("newProduct") Product newProduct) {
+        this.productService.deleteProduct(newProduct.getId());
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("/admin/product/{id}")
+    public String getProductDetailPage(Model model, @PathVariable long id) {
+        Product product = this.productService.getProductById(id).get();
+        model.addAttribute("product", product);
+        model.addAttribute("id", id);
+        return "/admin/product/detail";
     }
 }

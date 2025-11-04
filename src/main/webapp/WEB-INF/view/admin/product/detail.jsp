@@ -9,9 +9,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Duc Titus - laptopshop project" />
-    <meta name="author" content="Duc Titus" />
-    <title>User Detail</title>   
+    <meta name="description" content="Đức - Dự án laptopshop" />
+    <meta name="author" content="Đức" />
+    <title>Product Detail</title>   
     <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -23,34 +23,37 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">User Detail</h1>
+                    <h1 class="mt-4">Product Detail</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item "><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">User Detail</li>
+                        <li class="breadcrumb-item active">Users</li>
                     </ol>
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between">
-                                    <h3>User Detail with id = ${data.id}</h3>
+                                    <h3>Product Detail with id = ${id}</h3>
                                 </div>
                 
                                 <hr />
                                 <div class="card" style="width: 60%">
+                                    <img src="/images/product/${product.image}" class="card-img-top" alt="Product Image">
                                     <div class="card-header">
-                                      User Information
+                                      Product Information
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                      <li class="list-group-item">ID: ${data.id}</li>
-                                      <li class="list-group-item">Email: ${data.email}</li>
-                                      <li class="list-group-item">Full Name: ${data.fullName}</li>
-                                      <li class="list-group-item">Role: ${not empty data and not empty data.role and not empty data.role.name
-                                        ? data.role.name
-                                        : 'Guest User'}</li>
-                                      <li class="list-group-item">Address:${data.address} </li>
+                                      <li class="list-group-item">ID: ${product.id}</li>
+                                      <li class="list-group-item">Name: ${product.name}</li>
+                                      <li class="list-group-item">Price: ${product.price}</li>
+                                      <li class="list-group-item">Factory: ${product.factory}</li>
+
+                                      <li class="list-group-item">Detail Description: ${product.detailDesc}</li>
+                                      <li class="list-group-item">Short Description: ${product.shortDesc}</li>
+                                      <li class="list-group-item">Quantity: ${product.quantity}</li>
+                                      <li class="list-group-item">Sold: ${product.sold}</li>
                                     </ul>
                                 </div>
-                                <a href="/admin/user" class="btn btn-warning mt-3">Back</a>
+                                <a href="/admin/product" class="btn btn-warning mt-3">Back</a>
                                 </div>
                             </div>
                         </div>
