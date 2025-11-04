@@ -6,9 +6,9 @@
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; Đức 2024</div>
             <div>
-                <a href="https://hoidanit.vn/" target="_blank">Website</a>
+                <a href="https://www.linkedin.com/in/duc-tran-277564229/" target="_blank">Duc Titus's Linkedin</a>
                 &middot;
-                <a href="https://www.youtube.com/@hoidanit" target="_blank">Youtube channel</a>
+                <a href="https://ducportfolio.vercel.app/" target="_blank">Duc Titus's Portfolio</a>
             </div>
         </div>
     </div>

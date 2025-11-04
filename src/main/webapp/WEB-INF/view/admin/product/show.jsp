@@ -27,6 +27,12 @@
                         <li class="breadcrumb-item "><a href="/admin">Dashboard</a></li>
                         <li class="breadcrumb-item active">Products</li>
                     </ol>
+                    <div class="d-flex justify-content-between">
+                        <h3>Table Users</h3>
+                        <a href="/admin/product/create" class="btn btn-primary"> 
+                            Add a new product
+                        </a>
+                    </div>
                     <hr/>
                     <table class="table table-hover table-bordered">
                         <thead>
@@ -38,6 +44,22 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
+
+                        <tbody>
+                            <c:forEach var="product" items="${products}">
+                                <tr>
+                                    <td>${product.id}</td>
+                                    <td>${product.name}</td>
+                                    <td>${product.price}</td>
+                                    <td>${product.factory}</td>
+                                    <td>
+                                        <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
+                                        <a href="/admin/product/update/${product.id}" class="btn btn-warning mx-2">Update</a>
+                                        <a href="/admin/product/delete/${product.id}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
                     </table>
                 </div>
             </main>
