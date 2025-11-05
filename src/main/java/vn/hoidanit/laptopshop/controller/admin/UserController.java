@@ -88,10 +88,10 @@ public class UserController {
             @ModelAttribute("newUser") @Valid User hoidanit, BindingResult newUserBindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) { // getting value of user in view to save in db
 
-        List<FieldError> errors = newUserBindingResult.getFieldErrors();
-        for (FieldError error : errors ) {
-            System.out.println (error.getField() + " - " + error.getDefaultMessage());
-        }
+        // List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        // for (FieldError error : errors ) {
+        //     System.out.println (error.getField() + " - " + error.getDefaultMessage());
+        // }
 
         //validate
         if (newUserBindingResult.hasErrors()) {
