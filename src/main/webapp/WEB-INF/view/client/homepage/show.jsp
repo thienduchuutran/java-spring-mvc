@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+    <!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -69,8 +69,6 @@
 
             <jsp:include page="../layout/banner.jsp" />
 
-            <jsp:include page="../layout/feature.jsp" />
-
 
             <!-- Fruits Shop Start-->
             <div class="container-fluid fruite py-5">
@@ -133,7 +131,7 @@
             </div>
             <!-- Fruits Shop End-->
 
-
+            <jsp:include page="../layout/feature.jsp" />
 
             <jsp:include page="../layout/footer.jsp" />
 

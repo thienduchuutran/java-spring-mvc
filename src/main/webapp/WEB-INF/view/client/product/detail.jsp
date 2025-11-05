@@ -48,6 +48,15 @@
             <div class="container-fluid py-5 mt-5">
                 <div class="container py-5">
                     <div class="row g-4 mb-5">
+
+                        <div>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">${product.name}</li>
+                                </ol>
+                            </nav>
+                        </div>
                   
                       <!-- LEFT: product details -->
                       <div class="col-12 col-md-8 col-xl-9">
@@ -115,10 +124,10 @@
                           <h4 class="mb-3">Categories</h4>
                           <ul class="list-unstyled">
                             <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Apples</a><span>(3)</span></li>
-                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Oranges</a><span>(5)</span></li>
-                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Strawberry</a><span>(2)</span></li>
-                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Banana</a><span>(8)</span></li>
-                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Pumpkin</a><span>(5)</span></li>
+                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Dell</a><span>(5)</span></li>
+                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>HP</a><span>(2)</span></li>
+                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Lenovo</a><span>(8)</span></li>
+                            <li class="d-flex justify-content-between"><a href="#"><i class="fas fa-apple-alt me-2"></i>Acer</a><span>(5)</span></li>
                           </ul>
                         </div>
                       </aside>
