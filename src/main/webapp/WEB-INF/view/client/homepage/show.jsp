@@ -107,12 +107,17 @@
                                                             style="top: 10px; left: 10px;">${product.factory}</div>
                                                         <div
                                                             class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                            <h4>${product.name}</h4>
-                                                            <p>${product.shortDesc}</p>
-                                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                <p class="text-dark fs-5 fw-bold mb-0">${product.price}</p>
+                                                            <h4 style="font-size: 1.2rem; font-weight: 600;">
+                                                                <a href="/product/${product.id}" class="text-decoration-none text-dark">
+                                                                ${product.name}</a></h4>
+                                                           
+                                                            <p style="font-size: 0.9rem; font-weight: 400;">${product.shortDesc}</p>
+                                                            <div class="d-flex flex-lg-wrap">
+                                                                <p style="font-size: 1.2rem; text-align: center; width: 100%;" class="text-dark fs-5 fw-bold mb-0">$${product.price}0</p>
                                                                 <a href="/product/${product.id}"
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary">View</a>
+                                                                    class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                    Add to cart</a>
                                                             </div>
                                                         </div>
                                                     </div>
