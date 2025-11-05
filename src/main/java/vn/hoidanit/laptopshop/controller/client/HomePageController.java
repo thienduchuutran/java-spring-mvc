@@ -6,7 +6,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.validation.Valid;
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.domain.dto.LoginDTO;
 import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.services.ProductService;
 import vn.hoidanit.laptopshop.services.UserService;
@@ -62,6 +62,32 @@ public class HomePageController {
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
+        model.addAttribute("loginUser", new LoginDTO());
         return "client/auth/login";
+    }
+
+    @PostMapping("/login")
+    public String handleLogin(@ModelAttribute("loginUser") LoginDTO loginUser, Model model) {
+        // Find user by email
+        User user = this.userService.getUserByEmail(loginUser.getEmail());
+        
+        if (user == null) {
+            model.addAttribute("error", "Invalid email or password");
+            model.addAttribute("loginUser", loginUser); // Keep form data
+            return "client/auth/login";
+        }
+        
+        // Verify password
+        boolean isPasswordMatch = this.passwordEncoder.matches(loginUser.getPassword(), user.getPassword());
+        
+        if (!isPasswordMatch) {
+            model.addAttribute("error", "Invalid email or password");
+            model.addAttribute("loginUser", loginUser); // Keep form data
+            return "client/auth/login";
+        }
+        
+        // TODO: Implement session management or Spring Security authentication here
+        // For now, redirect to home page
+        return "redirect:/";
     }
 }
