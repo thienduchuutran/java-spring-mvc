@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import vn.hoidanit.laptopshop.domain.Role;
 import vn.hoidanit.laptopshop.domain.User;
+import vn.hoidanit.laptopshop.domain.dto.RegisterDTO;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.repository.RoleRepository;
 
@@ -42,5 +43,14 @@ public class UserService {
 
     public Role getRoleByName(String name) {
         return this.roleRepository.findByName(name);
+    }
+
+    //this is mapping from RegisterDTO to User, or transfer object from RegisterDTO to User
+    public User registerDTOToUser(RegisterDTO registerUser) {
+        User user = new User();
+        user.setFullName(registerUser.getFirstName() + " " + registerUser.getLastName());
+        user.setEmail(registerUser.getEmail());
+        user.setPassword(registerUser.getPassword());
+        return this.userRepository.save(user);
     }
 }

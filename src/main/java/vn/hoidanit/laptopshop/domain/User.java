@@ -37,8 +37,7 @@ public class User {
     private String fullName;
 
     private String address;
-    
-    @NotNull
+
     @Size(min = 10, max = 10, message = "Phone number must be 10 digits")
     @Pattern(regexp = "^[0-9]*$", message = "Phone number must contain only numbers")
     private String phone;
