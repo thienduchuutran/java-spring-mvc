@@ -53,4 +53,8 @@ public class UserService {
         user.setPassword(registerUser.getPassword());
         return this.userRepository.save(user);
     }
+
+    public boolean isEmailExists(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
 }
