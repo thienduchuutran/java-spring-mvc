@@ -22,7 +22,7 @@ public class UploadService {
         if (file.isEmpty()) {
             return "";
         }
-        String rootPath = this.servletContext.getRealPath("/resources/product");
+        String rootPath = this.servletContext.getRealPath("/resources/images");
         String finalName = "";
 
         try {

@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,7 @@ public class ProductController {
         if (newProductBindingResult.hasErrors()) {
             return "/admin/product/create";
         }
-        String image = this.uploadService.handleSaveUploadFile(file, "image");
+        String image = this.uploadService.handleSaveUploadFile(file, "product");
         newProduct.setImage(image);
         this.productService.createProduct(newProduct);
         return "redirect:/admin/product";
@@ -72,5 +73,38 @@ public class ProductController {
         model.addAttribute("product", product);
         model.addAttribute("id", id);
         return "/admin/product/detail";
+    }
+
+    @GetMapping("/admin/product/update/{id}")
+    public String getUpdateProductPage(Model model, @PathVariable long id) {
+        Optional<Product> currentProduct = this.productService.getProductById(id);
+        model.addAttribute("newProduct", currentProduct.get());
+        return "/admin/product/update";
+    }
+
+    @PostMapping("/admin/product/update")
+    public String updateProduct(@ModelAttribute("newProduct") @Valid Product product,
+    BindingResult productBindingResult, @RequestParam("hoidanitFile") MultipartFile file) {
+        if (productBindingResult.hasErrors()) {
+            return "/admin/product/update";
+        }
+        Product currentProduct = this.productService.getProductById(product.getId()).get();
+        if (currentProduct != null) {
+            if (!file.isEmpty()) {
+                String image = this.uploadService.handleSaveUploadFile(file, "product");
+                currentProduct.setImage(image);
+            }
+            currentProduct.setName(product.getName());
+            currentProduct.setPrice(product.getPrice());
+            currentProduct.setFactory(product.getFactory());
+            currentProduct.setDetailDesc(product.getDetailDesc());
+            currentProduct.setShortDesc(product.getShortDesc());
+            currentProduct.setQuantity(product.getQuantity());
+            currentProduct.setSold(product.getSold());
+            
+            this.productService.updateProduct(currentProduct);
+        }
+
+        return "redirect:/admin/product";
     }
 }
