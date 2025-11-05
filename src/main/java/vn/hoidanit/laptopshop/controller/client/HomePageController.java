@@ -47,6 +47,10 @@ public class HomePageController {
     public String handleRegister(@ModelAttribute("registerUser") @Valid RegisterDTO registerUser,
     BindingResult bindingResult) {
 
+        if (bindingResult.hasErrors()) {
+            return "client/auth/register";
+        }
+
         User user = this.userService.registerDTOToUser(registerUser);
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
         
