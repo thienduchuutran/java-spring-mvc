@@ -37,10 +37,11 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session != null) {
+        if (session == null) {
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+        session.setAttribute("fullName", "Duc");
     }
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
