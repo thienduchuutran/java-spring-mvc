@@ -87,12 +87,15 @@
                                                                 ${product.name}</a></h4>
                                                            
                                                             <p style="font-size: 0.9rem; font-weight: 400;">${product.shortDesc}</p>
-                                                            <div class="d-flex flex-lg-wrap">
+                                                            <div class="d-flex flex-lg-wrap justify-content-center">
                                                                 <p style="font-size: 1.2rem; text-align: center; width: 100%;" class="text-dark fs-5 fw-bold mb-0">$${product.price}0</p>
-                                                                <a href="/product/${product.id}"
+                                                                <form action="/add-product-to-cart/${product.id}" method="post">
+                                                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                                                                <button
                                                                     class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
                                                                     <i class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                                    Add to cart</a>
+                                                                    Add to cart</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
