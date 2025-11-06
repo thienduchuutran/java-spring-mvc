@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -20,7 +21,10 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.services.UserService;
 
 public class CustomSuccessHandler implements AuthenticationSuccessHandler {
-    private final UserService userService;
+
+    //autowired here means letting Spring take care of the dependency injection, a lazy way to inject the dependency
+    @Autowired
+    private UserService userService;
 
     protected String determineTargetUrl(Authentication authentication) {
         Map<String, String> roleTargetUrlMap = new HashMap<>();
@@ -50,7 +54,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         User user = this.userService.getUserByEmail(email);
         if(user != null) {
             session.setAttribute("fullName", user.getFullName());
-            session.setAttribute("avatar", user.getAvatar());
+            session.setAttribute("avatar", user.getAvatar());   
         }
     }
 
