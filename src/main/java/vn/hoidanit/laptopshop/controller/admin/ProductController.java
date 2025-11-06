@@ -33,20 +33,20 @@ public class ProductController {
     public String getProduct(Model model) {
         List<Product> products = this.productService.fetchProducts();
         model.addAttribute("products", products);
-        return "/admin/product/show";
+        return "admin/product/show";
     }
 
     @GetMapping("/admin/product/create")
     public String getCreateProductPage(Model model) {
         model.addAttribute("newProduct", new Product());
-        return "/admin/product/create";
+        return "admin/product/create";
     }
 
     @PostMapping("/admin/product/create")
     public String createProduct(@ModelAttribute("newProduct") @Valid Product newProduct, BindingResult newProductBindingResult,
      @RequestParam("hoidanitFile") MultipartFile file) {
         if (newProductBindingResult.hasErrors()) {
-            return "/admin/product/create";
+            return "admin/product/create";
         }
         String image = this.uploadService.handleSaveUploadFile(file, "product");
         newProduct.setImage(image);
@@ -58,7 +58,7 @@ public class ProductController {
     public String getDeleteProductPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
         model.addAttribute("newProduct", new Product());
-        return "/admin/product/delete";
+        return "admin/product/delete";
     }
 
     @PostMapping("/admin/product/delete")
@@ -72,21 +72,21 @@ public class ProductController {
         Product product = this.productService.getProductById(id).get();
         model.addAttribute("product", product);
         model.addAttribute("id", id);
-        return "/admin/product/detail";
+        return "admin/product/detail";
     }
 
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProductPage(Model model, @PathVariable long id) {
         Optional<Product> currentProduct = this.productService.getProductById(id);
         model.addAttribute("newProduct", currentProduct.get());
-        return "/admin/product/update";
+        return "admin/product/update";
     }
 
     @PostMapping("/admin/product/update")
     public String updateProduct(@ModelAttribute("newProduct") @Valid Product product,
     BindingResult productBindingResult, @RequestParam("hoidanitFile") MultipartFile file) {
         if (productBindingResult.hasErrors()) {
-            return "/admin/product/update";
+            return "admin/product/update";
         }
         Product currentProduct = this.productService.getProductById(product.getId()).get();
         if (currentProduct != null) {
