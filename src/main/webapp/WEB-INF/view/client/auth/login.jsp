@@ -33,13 +33,14 @@
                                     </c:if>
                                     <form:form method="post" action="/login" modelAttribute="loginUser">
                                         <div class="form-floating mb-3">
-                                            <form:input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" path="email" />
+                                            <form:input class="form-control" type="email" placeholder="name@example.com" name="username" />
                                             <label for="inputEmail">Email address</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <form:input class="form-control" id="inputPassword" type="password" placeholder="Password" path="password" />
+                                            <form:input class="form-control" type="password" placeholder="Password" name="password" />
                                             <label for="inputPassword">Password</label>
                                         </div>
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                         <div class="mt-4 mb-0">
                                             <button type="submit" style="width: 100%;" class="btn btn-primary btn-block">Login</button>
                                         </div>
