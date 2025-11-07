@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.servlet.http.HttpSession;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
@@ -48,7 +49,7 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public void addProductToCart(String email, long productId) {
+    public void addProductToCart(String email, long productId, HttpSession session) {
         User user = this.userService.getUserByEmail(email);
         if(user != null){
             //if user ain't have cart yet -> create new cart
@@ -67,8 +68,11 @@ public class ProductService {
                 Product realProduct = productOptional.get();
 
                 //update total number of items in cart to display on UI
-                cart.setSum(cart.getSum() + 1);
+                int sum = cart.getSum() + 1;
+                cart.setSum(sum);
                 this.cartRepository.save(cart);
+                session.setAttribute("cartSum", sum);
+
                 //check if product already in cart
                 CartDetail productExistsInCart = this.cartDetailRepository.findByCartAndProduct(cart, realProduct);
                 //if product already in cart -> update quantity
