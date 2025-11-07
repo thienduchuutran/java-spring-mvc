@@ -56,7 +56,7 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public void addProductToCart(String email, long productId, HttpSession session) {
+    public void addProductToCart(String email, long productId, HttpSession session, long quantity) {
         User user = this.userService.getUserByEmail(email);
         if(user != null){
             //if user ain't have cart yet -> create new cart
@@ -75,7 +75,7 @@ public class ProductService {
                 Product realProduct = productOptional.get();
 
                 //update total number of items in cart to display on UI
-                int sum = cart.getSum() + 1;
+                int sum = (int) (cart.getSum() + quantity);
                 cart.setSum(sum);
                 this.cartRepository.save(cart);
                 session.setAttribute("cartSum", sum);
@@ -84,14 +84,14 @@ public class ProductService {
                 CartDetail productExistsInCart = this.cartDetailRepository.findByCartAndProduct(cart, realProduct);
                 //if product already in cart -> update quantity
                 if(productExistsInCart != null){
-                    productExistsInCart.setQuantity(productExistsInCart.getQuantity() + 1);
+                    productExistsInCart.setQuantity(productExistsInCart.getQuantity() + quantity);
                     this.cartDetailRepository.save(productExistsInCart);
                 } else {
                     //if product not in cart -> create new cart_detail row representing anew product in cart
                     CartDetail cartDetail = new CartDetail();
                     cartDetail.setCart(cart);
                     cartDetail.setProduct(realProduct);
-                    cartDetail.setQuantity(1);
+                    cartDetail.setQuantity(quantity);
                     cartDetail.setPrice(realProduct.getPrice());
                     this.cartDetailRepository.save(cartDetail);
                 }
