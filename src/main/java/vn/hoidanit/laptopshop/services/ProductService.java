@@ -146,7 +146,7 @@ public class ProductService {
         order.setReceiverName(receiverName);
         order.setReceiverPhone(receiverPhone);
         order.setReceiverAddress(receiverAddress);
-        order.setStatus("pending");
+        order.setStatus("PENDING");
         order =this.orderRepository.save(order);
 
         //create order details
@@ -166,7 +166,7 @@ public class ProductService {
                     order.setTotalPrice(order.getTotalPrice() + orderDetail.getPrice() * orderDetail.getQuantity());
                 }   
 
-                order.setStatus("done");
+                order.setStatus("COMPLETED");
                 //delete cart items and cart
                 for(CartDetail cartDetail : cartDetails){
                     this.cartDetailRepository.deleteById(cartDetail.getId());
