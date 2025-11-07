@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <!DOCTYPE html>
             <html lang="en">
 
@@ -77,7 +78,7 @@
                                             </td>
                                         </tr>
                                     </c:if>
-                                    <c:forEach var="cartDetail" items="${cartDetails}">
+                                    <c:forEach var="cartDetail" items="${cartDetails}" varStatus="status">
 
                                         <tr>
                                             <th scope="row">
@@ -111,7 +112,9 @@
                                                         class="form-control form-control-sm text-center border-0"
                                                         value="${cartDetail.quantity}"
                                                         data-cart-detail-id="${cartDetail.id}"
-                                                        data-cart-detail-price="${cartDetail.price}">
+                                                        data-cart-detail-price="${cartDetail.price}"
+                                                        data-cart-detail-index="${status.index}">
+                                                        
                                                     <div class="input-group-btn">
                                                         <button
                                                             class="btn btn-sm btn-plus rounded-circle bg-light border">
@@ -145,7 +148,7 @@
                                 <div class="col-12 col-md-8">
                                     <div class="bg-light rounded">
                                         <div class="p-4">
-                                            <h1 class="display-6 mb-4">Order Information <span class="fw-normal">Order</span>
+                                            <h1 class="display-6 mb-4">Order Information<span class="fw-normal"></span>
                                             </h1>
                                             <div class="d-flex justify-content-between mb-4">
                                                 <h5 class="mb-0 me-4">Subtotal:</h5>
@@ -166,9 +169,32 @@
                                                 $${totalPrice}0
                                             </p>
                                         </div>
-                                        <button
-                                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-                                            type="button">Confirm Order</button>
+                                        <form:form action="/confirm-checkout" method="post" modelAttribute="cart">
+                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                value="${_csrf.token}" />
+                                            <div style="display: none;">
+                                                <c:forEach var="cartDetail" items="${cart.cartDetails}"
+                                                    varStatus="status">
+                                                    <div class="mb-3">
+                                                        <div class="form-group">
+                                                            <label>Id:</label>
+                                                            <form:input class="form-control" type="text"
+                                                                value="${cartDetail.id}"
+                                                                path="cartDetails[${status.index}].id" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Quantity:</label>
+                                                            <form:input class="form-control" type="text"
+                                                                value="${cartDetail.quantity}"
+                                                                path="cartDetails[${status.index}].quantity" />
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
+                                            <button
+                                                class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Confirm Payment
+                                            </button>
+                                        </form:form>
                                     </div>
                                 </div>
                             </div>
