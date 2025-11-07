@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import vn.hoidanit.laptopshop.services.OrderService;
-import vn.hoidanit.laptopshop.services.ProductService;
 import vn.hoidanit.laptopshop.services.UserService;
 
 @Controller
