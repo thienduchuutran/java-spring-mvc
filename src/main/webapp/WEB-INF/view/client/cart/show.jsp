@@ -126,9 +126,12 @@
                                                 </p>
                                             </td>
                                             <td>
+                                                <form action="/delete-cart-item/${cartDetail.id}" method="post">
+                                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                                 <button class="btn btn-md rounded-circle bg-light border mt-4">
                                                     <i class="fa fa-times text-danger"></i>
                                                 </button>
+                                            </form>
                                             </td>
 
                                         </tr>

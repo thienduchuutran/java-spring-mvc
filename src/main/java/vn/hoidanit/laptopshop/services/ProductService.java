@@ -13,7 +13,6 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.CartDetailRepository;
 import vn.hoidanit.laptopshop.repository.CartRepository;
 import vn.hoidanit.laptopshop.repository.ProductRepository;
-import vn.hoidanit.laptopshop.services.UserService;
 
 @Service
 public class ProductService {
@@ -94,5 +93,29 @@ public class ProductService {
 
     public Cart getCartByUser(User user) {
         return this.cartRepository.findByUser(user);
+    }
+
+    public void deleteCartItem(long cartItemId, HttpSession session) {
+        Optional<CartDetail> cartItemDetail = this.cartDetailRepository.findById(cartItemId);
+        if(cartItemDetail.isPresent()){
+            CartDetail cartItem = cartItemDetail.get();
+            Cart currentCart = cartItem.getCart();
+            long numberOfItemsDeleted = cartItem.getQuantity();
+            //delete cart item
+            this.cartDetailRepository.deleteById(cartItemId);
+
+            //update cart
+            if (currentCart.getSum() > 1) {
+                //update current cart
+                int s = (int) (currentCart.getSum() - numberOfItemsDeleted);
+                currentCart.setSum(s);
+                session.setAttribute("cartSum", s);
+                this.cartRepository.save(currentCart);  
+            } else {
+                //delete cart if sum cart = 1
+                this.cartRepository.deleteById(currentCart.getId());
+                session.setAttribute("cartSum", 0);
+            }
+        } 
     }
 }
