@@ -151,37 +151,15 @@ public class ItemController {
                 // page = 1
             }
         } catch (Exception e) {
-            // page = 1
-            // TODO: handle exception
+
         }
 
         
         Pageable pageable = PageRequest.of(page - 1, 60);
-        
-        Page<Product> prs = this.productService.fetchProducts(pageable);
 
-        //case 1
-        // double min = minPriceOptional.isPresent() ? Double.parseDouble(minPriceOptional.get()) : 0;
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, min);
+        Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, productCriteriaDTO);
 
-        //case 2
-        // double max = maxPriceOptional.isPresent() ? Double.parseDouble(maxPriceOptional.get()) : 0;
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, max);
-
-        
-        //case 3
-        // String factory = factoryOptional.isPresent() ? factoryOptional.get() : "";
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, factory);
-
-        //case 4
-        // List<String> factories = Arrays.asList(factoryOptional.get().split(","));
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, factories); 
-
-        //case 5
-        // String price = priceOptional.isPresent() ? priceOptional.get() : "";
-        // Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, price);
-
-        List<Product> products = prs.getContent();
+        List<Product> products = prs.getContent().size() > 0 ? prs.getContent() : new ArrayList<Product>();
 
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);

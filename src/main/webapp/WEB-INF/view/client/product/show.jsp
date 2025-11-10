@@ -8,7 +8,7 @@
 
                 <head>
                     <meta charset="utf-8">
-                    <title> Our Products - Laptopshop</title>
+                    <title> Products - Laptopshop</title>
                     <meta content="width=device-width, initial-scale=1.0" name="viewport">
                     <meta content="" name="keywords">
                     <meta content="" name="description">
@@ -56,7 +56,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Our Products
+                                            <li class="breadcrumb-item active" aria-current="page">Product List
                                             </li>
                                         </ol>
                                     </nav>
@@ -65,7 +65,7 @@
                                 <div class="row g-4 fruite">
                                     <div class="col-12 col-md-4">
                                         <div class="row g-4">
-                                            <div class="col-12 id="factoryFilter">
+                                            <div class="col-12" id="factoryFilter">
                                                 <div class="mb-2"><b>Factory</b></div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="factory-1"
@@ -101,7 +101,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="col-12 id="usageFilter">
+                                            <div class="col-12" id="targetFilter">
                                                 <div class="mb-2"><b>Usage</b></div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-1"
@@ -112,28 +112,27 @@
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-2"
                                                         value="STUDENT-OFFICE">
-                                                    <label class="form-check-label" for="target-2">Student - Office</label>
+                                                    <label class="form-check-label" for="target-2"> Student - Office</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-3"
-                                                        value="DESIGNER-GRAPHIC">
-                                                    <label class="form-check-label" for="target-3">Design
-                                                        Graphic</label>
+                                                        value="DESIGN-GRAPHICS">
+                                                    <label class="form-check-label" for="target-3"> Design - Graphic Designer</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-4"
-                                                        value="LIGHTWEIGHT">
-                                                    <label class="form-check-label" for="target-4">Lightweight</label>
+                                                        value="THIN-LIGHT">
+                                                    <label class="form-check-label" for="target-4"> Lightweight</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-5"
-                                                        value="BUSINESSMAN">
-                                                    <label class="form-check-label" for="target-5">Businessman</label>
+                                                        value="BUSINESS">
+                                                    <label class="form-check-label" for="target-5"> Business</label>
                                                 </div>
 
 
                                             </div>
-                                            <div class="col-12 id="priceFilter">
+                                            <div class="col-12" id="priceFilter">
                                                 <div class="mb-2"><b>Price</b></div>
 
                                                 <div class="form-check form-check-inline">
@@ -145,21 +144,13 @@
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-3"
                                                         value="FROM-500-TO-1000">
-                                                    <label class="form-check-label" for="price-3">From $500 to $1000
-                                                        </label>
+                                                    <label class="form-check-label" for="price-3">From $500 - $1000</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-4"
                                                         value="FROM-1000-TO-1500">
-                                                    <label class="form-check-label" for="price-4">From $1000 to $1500
-                                                        </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="price-5"
-                                                        value="OVER-1500">
-                                                        <label class="form-check-label" for="price-5">Over $1500</label>
+                                                    <label class="form-check-label" for="price-4">From $1000 - $1500</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -167,20 +158,20 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-1"
-                                                        value="PRICE-INCREASING" name="radio-sort">
-                                                    <label class="form-check-label" for="sort-1">Price increasing</label>
+                                                            value="PRICE-ASC" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-1">Price Ascending</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-2"
-                                                        value="PRICE-DECREASING" name="radio-sort">
-                                                    <label class="form-check-label" for="sort-2">Price decreasing</label>
+                                                        value="PRICE-DESC" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-2">Price Descending</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-3" checked
-                                                        value="NO-SORT" name="radio-sort">
-                                                    <label class="form-check-label" for="sort-3">No sort</label>
+                                                        value="NONE" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-3">No Sort</label>
                                                 </div>
 
                                             </div>
@@ -195,6 +186,9 @@
                                     </div>
                                     <div class="col-12 col-md-8 text-center">
                                         <div class="row g-4">
+                                            <c:if test="${totalPages ==  0}">
+                                                <div class="col-12">No products found</div>
+                                            </c:if>
                                             <c:forEach var="product" items="${products}">
                                                 <div class="col-md-6 col-lg-4">
                                                     <div class="rounded position-relative fruite-item">
@@ -203,7 +197,7 @@
                                                                 class="img-fluid w-100 rounded-top" alt="">
                                                         </div>
                                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                            style="top: 10px; left: 10px;">${product.factory}
+                                                            style="top: 10px; left: 10px;">Laptop
                                                         </div>
                                                         <div
                                                             class="p-4 border border-secondary border-top-0 rounded-bottom">
@@ -218,8 +212,8 @@
                                                             <div
                                                                 class="d-flex  flex-lg-wrap justify-content-center flex-column">
                                                                 <p style="font-size: 15px; text-align: center; width: 100%;"
-                                                                    class="text-dark  fw-bold mb-3">$${product.price}0
-                                                                
+                                                                    class="text-dark  fw-bold mb-3">
+                                                                    $${product.price}0
                                                                 </p>
                                                                 <form action="/add-product-to-cart/${product.id}"
                                                                     method="post">
@@ -237,31 +231,33 @@
                                                     </div>
                                                 </div>
                                             </c:forEach>
-                                            <c:if test="${totalPages gt 0}">
 
-                                            <div class="pagination d-flex justify-content-center mt-5">
-                                                <li class="page-item">
-                                                    <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
-                                                        href="/products?page=${currentPage - 1}" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                            <c:if test="${totalPages > 0}">
+                                                <div class="pagination d-flex justify-content-center mt-5">
                                                     <li class="page-item">
-                                                        <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
-                                                            href="/products?page=${loop.index + 1}">
-                                                            ${loop.index + 1}
+                                                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                            href="/products?page=${currentPage - 1}"
+                                                            aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
                                                         </a>
                                                     </li>
-                                                </c:forEach>
-                                                <li class="page-item">
-                                                    <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
-                                                        href="/products?page=${currentPage + 1}" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
+                                                    <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                        <li class="page-item">
+                                                            <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
+                                                                href="/products?page=${loop.index + 1}">
+                                                                ${loop.index + 1}
+                                                            </a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <li class="page-item">
+                                                        <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                            href="/products?page=${currentPage + 1}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+
+                                                </div>
                                             </c:if>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

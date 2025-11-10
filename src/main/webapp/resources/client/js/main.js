@@ -127,7 +127,6 @@
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
         })
-    });
 
         //add active class to header
         const navElement = $("#navbarCollapse");
@@ -142,6 +141,9 @@
                 link.removeClass('active'); // Remove 'active' class if the href does not match
             }
         });
+    });
+
+
 
     // Product Quantity
     // $('.quantity button').on('click', function () {
@@ -178,9 +180,11 @@
         input.val(newVal);
 
         //set form index
-        const index = input.attr("data-cart-detail-index");
+        const index = input.attr("data-cart-detail-index")
         const el = document.getElementById(`cartDetails${index}.quantity`);
         $(el).val(newVal);
+
+
 
         //get price
         const price = input.attr("data-cart-detail-price");
@@ -189,7 +193,7 @@
         const priceElement = $(`p[data-cart-detail-id='${id}']`);
         if (priceElement) {
             const newPrice = +price * newVal;
-            priceElement.text(formatCurrency(newPrice.toFixed(2)));
+            priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
         }
 
         //update total cart price
@@ -210,7 +214,7 @@
             //update
             totalPriceElement?.each(function (index, element) {
                 //update text
-                $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)));
+                $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + " đ");
 
                 //update data-attribute
                 $(totalPriceElement[index]).attr("data-cart-total-price", newTotal);
@@ -228,21 +232,21 @@
         return formatter;
     }
 
-    //Filter Products
-    $('#btnFilter').on('click', function () {
-        e.preventDefault();
+    //handle filter products
+    $('#btnFilter').click(function (event) {
+        event.preventDefault();
+
         let factoryArr = [];
-        let usageArr = [];
+        let targetArr = [];
         let priceArr = [];
-        
         //factory filter
         $("#factoryFilter .form-check-input:checked").each(function () {
             factoryArr.push($(this).val());
         });
 
-        //usage filter
-        $("#usageFilter .form-check-input:checked").each(function () {
-            usageArr.push($(this).val());
+        //target filter
+        $("#targetFilter .form-check-input:checked").each(function () {
+            targetArr.push($(this).val());
         });
 
         //price filter
@@ -251,33 +255,36 @@
         });
 
         //sort order
-        let sortValue = $("input[name='radio-sort']:checked").val();
+        let sortValue = $('input[name="radio-sort"]:checked').val();
 
         const currentUrl = new URL(window.location.href);
         const searchParams = currentUrl.searchParams;
 
-        //add or update query params
-        searchParams.set('page', 1);
+        // Add or update query parameters
+        searchParams.set('page', '1');
         searchParams.set('sort', sortValue);
 
-        if(factoryArr.length > 0){
+        //reset
+        searchParams.delete('factory');
+        searchParams.delete('target');
+        searchParams.delete('price');
+
+        if (factoryArr.length > 0) {
             searchParams.set('factory', factoryArr.join(','));
         }
-
-        if(usageArr.length > 0){
-            searchParams.set('usage', usageArr.join(','));
+        if (targetArr.length > 0) {
+            searchParams.set('target', targetArr.join(','));
         }
-
-        if(priceArr.length > 0){
+        if (priceArr.length > 0) {
             searchParams.set('price', priceArr.join(','));
         }
 
-        //update URL and reload page
+        // Update the URL and reload the page
         window.location.href = currentUrl.toString();
     });
 
-    //autocheckbox after page loading
-    // parse url params
+    //handle auto checkbox after page loading
+    // Parse the URL parameters
     const params = new URLSearchParams(window.location.search);
 
     // Set checkboxes for 'factory'
@@ -309,5 +316,6 @@
         const sort = params.get('sort');
         $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
     }
+
 })(jQuery);
 

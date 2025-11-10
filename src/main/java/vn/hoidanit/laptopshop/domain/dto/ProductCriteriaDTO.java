@@ -1,36 +1,37 @@
 package vn.hoidanit.laptopshop.domain.dto;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ProductCriteriaDTO {
     private Optional<String> page;
-    private Optional<String> factory;
-    private Optional<String> usage;
-    private Optional<String> price;
+    private Optional<List<String>> factory;
+    private Optional<List<String>> target;
+    private Optional<List<String>> price;
     private Optional<String> sort;
-    
+
     public Optional<String> getPage() {
         return page;
     }
     public void setPage(Optional<String> page) {
         this.page = page;
     }
-    public Optional<String> getFactory() {
+    public Optional<List<String>> getFactory() {
         return factory;
     }
-    public void setFactory(Optional<String> factory) {
+    public void setFactory(Optional<List<String>> factory) {
         this.factory = factory;
     }
-    public Optional<String> getUsage() {
-        return usage;
+    public Optional<List<String>> getTarget() {
+        return target;
     }
-    public void setUsage(Optional<String> usage) {
-        this.usage = usage;
+    public void setTarget(Optional<List<String>> target) {
+        this.target = target;
     }
-    public Optional<String> getPrice() {
+    public Optional<List<String>> getPrice() {
         return price;
     }
-    public void setPrice(Optional<String> price) {
+    public void setPrice(Optional<List<String>> price) {
         this.price = price;
     }
     public Optional<String> getSort() {
