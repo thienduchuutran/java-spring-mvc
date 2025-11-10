@@ -143,7 +143,7 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getProductPage(Model model, ProductCriteriaDTO productCriteriaDTO) {
+    public String getProductPage(Model model, ProductCriteriaDTO productCriteriaDTO, HttpServletRequest request) {
         int page = 1;
         try {
             if (productCriteriaDTO.getPage().isPresent()) {
@@ -174,9 +174,16 @@ public class ItemController {
 
         List<Product> products = prs.getContent().size() > 0 ? prs.getContent() : new ArrayList<Product>();
 
+        String qs = request.getQueryString();
+        if(qs != null && !qs.isBlank()) {
+            //remove page
+            qs = qs.replace("page=" + page, "");
+        }
+
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", prs.getTotalPages());
+        model.addAttribute("queryString", qs);
         return "client/product/show";
     }
 }

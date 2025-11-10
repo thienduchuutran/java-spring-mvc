@@ -29,7 +29,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            Đức
+            Titus
         </div>
     </nav>
 </div>
