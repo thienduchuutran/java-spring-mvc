@@ -228,5 +228,86 @@
         return formatter;
     }
 
+    //Filter Products
+    $('#btnFilter').on('click', function () {
+        e.preventDefault();
+        let factoryArr = [];
+        let usageArr = [];
+        let priceArr = [];
+        
+        //factory filter
+        $("#factoryFilter .form-check-input:checked").each(function () {
+            factoryArr.push($(this).val());
+        });
+
+        //usage filter
+        $("#usageFilter .form-check-input:checked").each(function () {
+            usageArr.push($(this).val());
+        });
+
+        //price filter
+        $("#priceFilter .form-check-input:checked").each(function () {
+            priceArr.push($(this).val());
+        });
+
+        //sort order
+        let sortValue = $("input[name='radio-sort']:checked").val();
+
+        const currentUrl = new URL(window.location.href);
+        const searchParams = currentUrl.searchParams;
+
+        //add or update query params
+        searchParams.set('page', 1);
+        searchParams.set('sort', sortValue);
+
+        if(factoryArr.length > 0){
+            searchParams.set('factory', factoryArr.join(','));
+        }
+
+        if(usageArr.length > 0){
+            searchParams.set('usage', usageArr.join(','));
+        }
+
+        if(priceArr.length > 0){
+            searchParams.set('price', priceArr.join(','));
+        }
+
+        //update URL and reload page
+        window.location.href = currentUrl.toString();
+    });
+
+    //autocheckbox after page loading
+    // parse url params
+    const params = new URLSearchParams(window.location.search);
+
+    // Set checkboxes for 'factory'
+    if (params.has('factory')) {
+        const factories = params.get('factory').split(',');
+        factories.forEach(factory => {
+            $(`#factoryFilter .form-check-input[value="${factory}"]`).prop('checked', true);
+        });
+    }
+
+    // Set checkboxes for 'target'
+    if (params.has('target')) {
+        const targets = params.get('target').split(',');
+        targets.forEach(target => {
+            $(`#targetFilter .form-check-input[value="${target}"]`).prop('checked', true);
+        });
+    }
+
+    // Set checkboxes for 'price'
+    if (params.has('price')) {
+        const prices = params.get('price').split(',');
+        prices.forEach(price => {
+            $(`#priceFilter .form-check-input[value="${price}"]`).prop('checked', true);
+        });
+    }
+
+    // Set radio buttons for 'sort'
+    if (params.has('sort')) {
+        const sort = params.get('sort');
+        $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
+    }
 })(jQuery);
 
