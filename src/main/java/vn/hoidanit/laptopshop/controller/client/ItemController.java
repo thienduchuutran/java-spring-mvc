@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Product;
+import vn.hoidanit.laptopshop.domain.Product_;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.ProductCriteriaDTO;
 import vn.hoidanit.laptopshop.services.ProductService;
@@ -154,8 +156,19 @@ public class ItemController {
 
         }
 
+        //check sort price
+        Pageable pageable = PageRequest.of(page - 1, 3);
+        if(productCriteriaDTO.getSort() != null && productCriteriaDTO.getSort().isPresent()) {
+            String sort = productCriteriaDTO.getSort().get();
+            if(sort.equals("PRICE-ASC")) {
+                pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).ascending());
+            } else if(sort.equals("PRICE-DESC")) {
+                pageable = PageRequest.of(page - 1, 3, Sort.by(Product_.PRICE).descending());
+            }
+        }
+
         
-        Pageable pageable = PageRequest.of(page - 1, 60);
+        // Pageable pageable = PageRequest.of(page - 1, 60);
 
         Page<Product> prs = this.productService.fetchProductsWithSpec(pageable, productCriteriaDTO);
 
