@@ -1,20 +1,26 @@
-1 user có 1 role  và table user chứa role_id (owner side)
-User -> ManyToOne - lưu là Role
+One user has one role, and the user table contains role_id (owner side).
+User -> @ManyToOne — stored as Role
+
 @ManyToOne
 private Role role;
 
 
-1 role có nhiều user ->   Role - OneToMany - lưu là List<User>
+One role has many users → Role -> @OneToMany — stored as List<User>
+
 @OneToMany
 List<User> users;
 
-column mapping
 
-Sử dụng mappedBy cho inverse side:
-@OneToMany( mappedBy = “role”)
+Column mapping
+
+Use mappedBy for the inverse side:
+
+@OneToMany(mappedBy = "role")
 List<User> users;
 
-Sử dụng joinColumns cho owner side:
+
+Use @JoinColumn for the owner side:
+
 @ManyToOne
 @JoinColumn(name = "role_id")
 private Role role;
