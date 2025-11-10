@@ -111,24 +111,23 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-2"
-                                                        value="SINHVIEN-VANPHONG">
-                                                    <label class="form-check-label" for="target-2">Student - office
-                                                        phòng</label>
+                                                        value="STUDENT-OFFICE">
+                                                    <label class="form-check-label" for="target-2">Student - Office</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-3"
-                                                        value="THIET-KE-DO-HOA">
+                                                        value="DESIGNER-GRAPHIC">
                                                     <label class="form-check-label" for="target-3">Design
-                                                        họa</label>
+                                                        Graphic</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-4"
-                                                        value="MONG-NHE">
+                                                        value="LIGHTWEIGHT">
                                                     <label class="form-check-label" for="target-4">Lightweight</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="target-5"
-                                                        value="DOANH-NHAN">
+                                                        value="BUSINESSMAN">
                                                     <label class="form-check-label" for="target-5">Businessman</label>
                                                 </div>
 
@@ -139,27 +138,27 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-2"
-                                                        value="duoi-10-trieu">
+                                                        value="UNDER-500">
                                                     <label class="form-check-label" for="price-2">Under $500</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-3"
-                                                        value="10-15-trieu">
+                                                        value="FROM-500-TO-1000">
                                                     <label class="form-check-label" for="price-3">From $500 to $1000
-                                                        triệu</label>
+                                                        </label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-4"
-                                                        value="15-20-trieu">
+                                                        value="FROM-1000-TO-1500">
                                                     <label class="form-check-label" for="price-4">From $1000 to $1500
-                                                        triệu</label>
+                                                        </label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="price-5"
-                                                        value="tren-20-triệu">
+                                                        value="OVER-1500">
                                                         <label class="form-check-label" for="price-5">Over $1500</label>
                                                 </div>
                                             </div>
@@ -168,19 +167,19 @@
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-1"
-                                                        value="gia-tang-dan" name="radio-sort">
+                                                        value="PRICE-INCREASING" name="radio-sort">
                                                     <label class="form-check-label" for="sort-1">Price increasing</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-2"
-                                                        value="gia-giam-dan" name="radio-sort">
+                                                        value="PRICE-DECREASING" name="radio-sort">
                                                     <label class="form-check-label" for="sort-2">Price decreasing</label>
                                                 </div>
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" id="sort-3"
-                                                        value="gia-nothing" name="radio-sort">
+                                                        value="NO-SORT" name="radio-sort">
                                                     <label class="form-check-label" for="sort-3">No sort</label>
                                                 </div>
 
