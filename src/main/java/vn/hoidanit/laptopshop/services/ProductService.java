@@ -54,8 +54,91 @@ public class ProductService {
         return this.productRepository.findAll(page);
     }
 
-    public Page<Product> fetchProductsWithSpec(Pageable page, String name) {
-        return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
+    // public Page<Product> fetchProductsWithSpec(Pageable page, String name) {
+    //     return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
+    // }
+
+    //case 1
+    // public Page<Product> fetchProductsWithSpec(Pageable page, double min) {
+    //     return this.productRepository.findAll(ProductSpecs.minPrice(min), page);
+    // }
+
+    //case 2
+    // public Page<Product> fetchProductsWithSpec(Pageable page, double min) {
+    //     return this.productRepository.findAll(ProductSpecs.maxPrice(min), page);
+    // }
+
+    //case 3
+    // public Page<Product> fetchProductsWithSpec(Pageable page, String factory) {
+    //     return this.productRepository.findAll(ProductSpecs.matchFactory(factory), page);
+    // }
+
+    //case 4
+    // public Page<Product> fetchProductsWithSpec(Pageable page, List<String> factories) {
+    //     return this.productRepository.findAll(ProductSpecs.matchFactories(factories), page);
+    // }
+
+    //case 5
+    public Page<Product> fetchProductsWithSpec(Pageable page, String price) {
+        if (price.equals("UNDER-500")) {
+            double min = 0;
+            double max = 500;
+            return this.productRepository.findAll(ProductSpecs.matchPrice(min, max), page);
+        } else if (price.equals("FROM-500-TO-1000")) {
+            double min = 500;
+            double max = 1000;
+            return this.productRepository.findAll(ProductSpecs.matchPrice(min, max), page);
+        } else if (price.equals("FROM-1000-TO-1500")) {
+            double min = 1000;
+            double max = 1500;
+            return this.productRepository.findAll(ProductSpecs.matchPrice(min, max), page);
+        } else if (price.equals("FROM-1500-TO-2000")) {
+            double min = 1500;
+            double max = 2000;
+            return this.productRepository.findAll(ProductSpecs.matchPrice(min, max), page);
+        } else {
+            return this.productRepository.findAll(page);
+        }
+    }
+
+    //case 6
+    public Page<Product> fetchProductsWithSpec(Pageable page, List<String> price){
+        Specification<Product> combinedSpec = (root, query, criteriaBuilder) -> criteriaBuilder.disjunction();
+        int count = 0;
+        for (String p : prices) {
+            double min = 0;
+            double max = 0;
+
+            //set appropriate min and max based on price range
+            switch(p){
+                case "UNDER-500":
+                    min = 0;
+                    max = 500;
+                    count++;
+                    break;
+                case "FROM-500-TO-1000":
+                    min = 500;
+                    max = 1000;
+                    count++;
+                    break;
+                case "FROM-1000-TO-1500":
+                    min = 1000;
+                    max = 1500;
+                    count++;
+                    break;
+                case "FROM-1500-TO-2000":
+            }
+
+            if(min != 0 && max != 0){
+                Specification<Product> rangeSpec = ProductSpecs.matchMultiplePrice(min, max);
+                combinedSpec = combinedSpec.or(rangeSpec);
+            }
+        }
+
+        if (count == 0){
+            return this.productRepository.findAll(page);
+        }
+        return this.productRepository.findAll(combinedSpec, page);
     }
 
     public Optional<Product> getProductById(long id) {
