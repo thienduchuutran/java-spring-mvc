@@ -317,5 +317,109 @@
         $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
     }
 
+     //handle add to cart with ajax
+     $('.btnAddToCartHomepage').click(function (event) {
+        event.preventDefault();
+
+        if (!isLogin()) {
+            $.toast({
+                heading: 'Error',
+                text: 'You need to login to add product to cart',
+                position: 'top-right',
+                icon: 'error'
+            })
+            return;
+        }
+
+        const productId = $(this).attr('data-product-id');
+        const token = $("meta[name='_csrf']").attr("content");
+        const header = $("meta[name='_csrf_header']").attr("content");
+
+        $.ajax({
+            url: `${window.location.origin}/api/add-product-to-cart`,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            type: "POST",
+            data: JSON.stringify({ quantity: 1, productId: productId }),
+            contentType: "application/json",
+
+            success: function (response) {
+                const sum = +response;
+                //update cart
+                $("#sumCart").text(sum)
+                //show message
+                $.toast({
+                    heading: 'Cart',
+                    text: 'Add product to cart successfully',
+                    position: 'top-right',
+
+                })
+
+            },
+            error: function (response) {
+                alert("There is an error, check code again")
+                console.log("error: ", response);
+            }
+
+        });
+    });
+
+    $('.btnAddToCartDetail').click(function (event) {
+        event.preventDefault();
+        if (!isLogin()) {
+            $.toast({
+                heading: 'Error',
+                text: 'You need to login to add product to cart',
+                position: 'top-right',
+                icon: 'error'
+            })
+            return;
+        }
+
+        const productId = $(this).attr('data-product-id');
+        const token = $("meta[name='_csrf']").attr("content");
+        const header = $("meta[name='_csrf_header']").attr("content");
+        const quantity = $("#cartDetails0\\.quantity").val();
+        $.ajax({
+            url: `${window.location.origin}/api/add-product-to-cart`,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            type: "POST",
+            data: JSON.stringify({ quantity: quantity, productId: productId }),
+            contentType: "application/json",
+
+            success: function (response) {
+                const sum = +response;
+                //update cart
+                $("#sumCart").text(sum)
+                //show message
+                $.toast({
+                    heading: 'Cart',
+                    text: 'Add product to cart successfully',
+                    position: 'top-right',
+
+                })
+
+            },
+            error: function (response) {
+                alert("There is an error, check code again")
+                console.log("error: ", response);
+            }
+
+        });
+    });
+
+    function isLogin() {
+        const navElement = $("#navbarCollapse");
+        const childLogin = navElement.find('a.a-login');
+        if (childLogin.length > 0) {
+            return false;
+        }
+        return true;
+    }
+
+
 })(jQuery);
 

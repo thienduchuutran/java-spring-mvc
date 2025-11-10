@@ -40,7 +40,6 @@ public class OrderController {
             }
         } catch (Exception e) {
             // page = 1
-            // TODO: handle exception
         }
 
         Pageable pageable = PageRequest.of(page - 1, 1);

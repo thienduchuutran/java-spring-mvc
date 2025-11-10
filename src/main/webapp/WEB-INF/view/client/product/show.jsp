@@ -37,6 +37,14 @@
                     <link href="/client/css/style.css" rel="stylesheet">
                 </head>
 
+                <style>
+                    .page-link.disabled {
+                        color: var(--bs-pagination-disabled-color);
+                        pointer-events: none;
+                        background-color: var(--bs-pagination-disabled-bg);
+                    }
+                </style>
+
                 <body>
 
                     <!-- Spinner Start -->

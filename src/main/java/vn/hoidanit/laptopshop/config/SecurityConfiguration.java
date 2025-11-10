@@ -55,7 +55,7 @@ public class SecurityConfiguration {
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, //accessing any views is considered as a forward request
                 DispatcherType.INCLUDE) .permitAll()
 
-                .requestMatchers("/", "/login", "/client/**", "/product/**", "/register", "/css/**", "/js/**", "/images/**").permitAll()    //this line let anyone access anything in requestMatchers
+                .requestMatchers("/", "/login", "/client/**", "/products/**", "/register", "/css/**", "/js/**", "/images/**").permitAll()    //this line let anyone access anything in requestMatchers
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 
                 .anyRequest().authenticated())

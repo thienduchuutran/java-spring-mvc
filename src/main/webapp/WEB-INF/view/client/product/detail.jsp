@@ -37,6 +37,14 @@
                     <link href="/client/css/style.css" rel="stylesheet">
                 </head>
 
+                <meta name="_csrf" content="${_csrf.token}" />
+                <!-- default header name is X-CSRF-TOKEN -->
+                <meta name="_csrf_header" content="${_csrf.headerName}" />
+
+
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
+                    rel="stylesheet">
+
                 <body>
 
                     <!-- Spinner Start -->

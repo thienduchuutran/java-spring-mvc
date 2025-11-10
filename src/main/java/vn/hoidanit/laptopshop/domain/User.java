@@ -1,5 +1,6 @@
 package vn.hoidanit.laptopshop.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -20,7 +21,8 @@ import vn.hoidanit.laptopshop.services.validator.StrongPassword;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id // we need this id bean for this class to become an entity without error
     @GeneratedValue(strategy = GenerationType.IDENTITY) // this will help id auto increments
     private long id;
